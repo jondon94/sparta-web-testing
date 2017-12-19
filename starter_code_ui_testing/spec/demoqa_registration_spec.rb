@@ -34,9 +34,9 @@ describe 'testing the demoqa registration page' do
     end
 
     it 'accept a new DOB' do
-      expect(@driver.dob_month_list_select).to be(true)
-      # expect(@driver.dob_day_list_select).to eq(21)
-      # expect(@driver.dob_year_list_select).to eq(1994)
+      @driver.dob_month_list_select
+      @driver.dob_day_list_select
+      @driver.dob_year_list_select
     end
 
     it 'should accept a new country value' do
@@ -44,6 +44,8 @@ describe 'testing the demoqa registration page' do
     end
 
     it 'should accept a valid phone number' do
+      @driver.set_phone_number_field('+44763324999')
+      expect(@driver.get_phone_number_field_value).to eq('+44763324999')
 
     end
 

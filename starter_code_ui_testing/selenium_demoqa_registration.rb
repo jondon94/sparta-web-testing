@@ -13,7 +13,7 @@ class SeleniumDemoReg
   DOB_MONTH_DROPDOWN_LIST = 'mm_date_8'# id
   DOB_DAY_DROPDOWN_LIST = 'dd_date_8'# id
   DOB_YEAR_DROPDOWN_LIST = 'yy_date_8'# id
-  PHONE_NUMBER_FIELDS =  # id
+  PHONE_NUMBER_FIELDS =  'phone_9'# id
   USERNAME_FIELD =  # id
   EMAIL_FIELD =  # id
   PROFILE_PICTURE_BUTTON =  # id
@@ -76,7 +76,6 @@ class SeleniumDemoReg
         return stat.selected?
       end
     end
-    # @chrome_driver.find_element(:name, MARITAL_STATUS).click
   end
 
   # hobby option management - Difficulty Medium
@@ -102,10 +101,12 @@ class SeleniumDemoReg
   def get_selected_country
     country_list = @chrome_driver.find_element(:id, COUNTRY_DROP_DOWN_LIST)
     options = country_list.find_elements(:tag_name => 'option')
-    options.each{|option| if option.text == "Brazil"; option.click end}
-    # continent_options = @chrome_driver.find_element(:id, 'continents')
-    # options = continent_options.find_elements(:tag_name => 'option')
-    # options.each{|option| if option.text == "North America"; option.click end}
+    options.each do |option|
+       if  option.text == "Brazil"
+         option.click
+      end
+    end
+
   end
 
   def country_dropdown_list_select(country)
@@ -121,28 +122,42 @@ class SeleniumDemoReg
   def dob_month_list_select
     months = @chrome_driver.find_element(:id, DOB_MONTH_DROPDOWN_LIST)
     options = months.find_elements(:tag_name => 'option')
-    options.each{|option| if option.text == "7"; option.click end}
+    options.each do |option|
+      if option.text == "7"
+         option.click
+     end
+   end
   end
 
   def dob_day_list_select
     days = @chrome_driver.find_element(:id, DOB_DAY_DROPDOWN_LIST)
     options = days.find_elements(:tag_name => 'option')
-    options.each{|option| if option.text == "21"; option.click end}
+    options.each do |option|
+      if option.text == "21"
+         option.click
+       end
+     end
   end
 
   def dob_year_list_select
     years = @chrome_driver.find_element(:id, DOB_YEAR_DROPDOWN_LIST)
     options = years.find_elements(:tag_name => 'option')
-    options.each{|option| if option.text == "1994"; option.click end}
+    options.each do |option|
+      if option.text == "1994"
+         option.click
+       end
+     end
   end
 
 
   # Phone number field management - Difficulty Easy
 
   def set_phone_number_field(phone_number)
+      @chrome_driver.find_element(:id, PHONE_NUMBER_FIELDS).send_keys(phone_number)
   end
 
   def get_phone_number_field_value
+    @chrome_driver.find_element(:id, PHONE_NUMBER_FIELDS)['value']
   end
 
   #  username field management - Difficulty Easy
@@ -193,15 +208,16 @@ class SeleniumDemoReg
 end
 
 
-reg_form_page = SeleniumDemoReg.new
-reg_form_page.access_registration_form
-reg_form_page.set_first_name_field('Jon')
-reg_form_page.set_last_name_field('Don')
-reg_form_page.select_marital_option
-reg_form_page.select_hobby_option
-reg_form_page.get_selected_country
-reg_form_page.dob_month_list_select
-reg_form_page.dob_day_list_select
-reg_form_page.dob_year_list_select
+# reg_form_page = SeleniumDemoReg.new
+# reg_form_page.access_registration_form
+# reg_form_page.set_first_name_field('Jon')
+# reg_form_page.set_last_name_field('Don')
+# reg_form_page.select_marital_option
+# reg_form_page.select_hobby_option
+# reg_form_page.get_selected_country
+# reg_form_page.dob_month_list_select
+# reg_form_page.dob_day_list_select
+# reg_form_page.dob_year_list_select
+# reg_form_page.set_phone_number_field('+44763324999')
 
-sleep 1
+# sleep 1
