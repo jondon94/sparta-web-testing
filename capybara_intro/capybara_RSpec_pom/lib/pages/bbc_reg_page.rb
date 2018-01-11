@@ -15,7 +15,7 @@ class BbcRegPage
   PASSWORD_SHOW_TEXT = 'Show password'
   POSTCODE_FIELD_ID = 'postcode-input'
   GENDER_DROPDOWN = 'gender-input'
-
+  CONFIRM_REGISTER = 'submit-button'
 
   def visit_register_page
     visit(SIGN_IN_PAGE_URL)
@@ -99,5 +99,13 @@ class BbcRegPage
 
   def email_updates_selection(opt)
     find(:xpath, ".//label[@for='#{opt}']/div/div").click
+  end
+
+  def find_confirm
+    find_button(CONFIRM_REGISTER)
+  end
+
+  def confirm_register
+    find_confirm.click
   end
 end
