@@ -14,12 +14,14 @@ describe 'Users should be able to register nw accounts' do
       @bbc_site.bbc_register_page.input_year_value('1994')
       sleep 2
       @bbc_site.bbc_register_page.continue_signup_button
-      @bbc_site.bbc_register_page.input_vaild_email('jdon@fake.com')
+      # @bbc_site.bbc_register_page.input_vaild_email('jdon@fake.com')
+      @bbc_site.bbc_register_page.input_vaild_email('jodo@fake.com')
       @bbc_site.bbc_register_page.input_new_password('24ch49ay')
       @bbc_site.bbc_register_page.click_for_verify_password
       @bbc_site.bbc_register_page.input_valid_postcode('ch4 9pf')
       @bbc_site.bbc_register_page.select_sex
       @bbc_site.bbc_register_page.email_updates_selection('optOut')
+      @bbc_site.bbc_register_page.confirm_register
       sleep 2
     end
   end
